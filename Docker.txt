@@ -1,0 +1,84 @@
+---Ejecutamos el: eso crea nuestra imagen 
+docker pull hello-world 
+
+
+--- Ejecutamos nuestra imagen en un contenedor Docker
+docker container run hello-world
+
+
+https://hub.docker.com/_/hello-world
+
+--- Listar todos los contenedores 
+docker container ls -a
+
+--- Eliminar contenedores
+docker container rm <container-id>
+
+--- Eliminar todos los contenedores detenidos
+docker container prune
+
+
+-- Eliminar imágenes
+docker image rm d2c94e258dcb
+
+- Con todas las copias que tiene
+$ docker image rm docker/getting-started
+
+------------------
+
+docker container run docker/getting-started
+
+
+--- Detener una imagen 
+ docker container stop 
+
+--- Correr rl contenedor de manera publica
+docker container run -d -p 80:80 docker/getting-started
+http://localhost/tutorial/
+
+ docker container run -dp 8080:80 docker/getting-started
+http://localhost:8080/tutorial/
+
+--- Borrar de manera forzada cuando esta ejecutansose
+ docker container rm -f 
+
+--- Borra todos los contenedores
+docker container prune
+
+===================================================================
+
+VARIABLES DE ENTORNO
+
+-- Instalar postgres
+ docker pull postgres
+
+--- Cambiar nombre 
+docker container run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+
+--- Para conectar a postgres cacmbiando o poniendo el puesto
+docker container run --name some-postgres -dp 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+====================================================================
+
+CREAR 2 CONTENDEORES Y ESOS CONT PUEDEN COMUNICARSE A TRAVES DE UNA RED DOCKER
+
+
+==================================================
+EJECUTANTO PLANTILLA
+
+--- Aca se cnstruye la imagen
+λ docker build -t webserver .
+
+
+--- Para levantar de manera local esa imagen y en que puerto con nginx
+λ docker run -it --rm -d -p 8080:80 --name web webserver
+
+--- Para levantar de manera virtul paar todos 
+λ docker build -t raynorman/paginaweb1:latest .
+
+--- Para subirlo realmente 
+λ docker push raynorman/paginaweb1:latest
+
+--- Para descargar de DockerHub a docker local
+λ docker run -it --rm -d -p 8080:80 --name web raynorman/paginaweb1:latest
