@@ -1,3 +1,41 @@
+<<<<<<< HEAD
+--- Correr app de sprint 
+$ ./mvnw spring-boot:run
+--- Hacemos un build
+./mvnw clean package -DskipTests
+
+--- solo por partes, ósea por el nombre de la app
+--- se crea la imagen
+docker-compose build java_app
+
+---  debe descargar todas las imágenes de Docker compose
+$ docker-compose up
+
+--- Pare eliminar todos los contenedores levantados
+$ docker-compose down
+
+
+ACA HACEMOS PETICIONES A NUESTRA API DESPLEGADA EN DOCKER CONECTADA A OTRO
+CONTENEDOR EN ESTE CASO CON POSTGRESQL 
+
+---Construir la imagen:
+docker-compose build java_app
+
+---Iniciar sesión en Docker Hub:
+docker login
+
+--- Subir la imagen a Docker Hub:
+docker-compose push java_app
+
+
+---Probar la descarga y ejecución en otro entorno:
+docker-compose pull
+docker-compose up
+
+
+
+
+=======
 --- Correr app de sprint 
 $ ./mvnw spring-boot:run
 --- Hacemos un build
@@ -56,3 +94,4 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+>>>>>>> origin/main
